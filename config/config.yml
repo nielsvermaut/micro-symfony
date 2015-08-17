@@ -1,0 +1,6 @@
+framework:
+    secret: toto
+    templating:
+        engine: [ twig ]
+    router:
+        resource: '%kernel.root_dir%/config/routing.yml'
