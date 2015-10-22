@@ -4,14 +4,19 @@ namespace AppBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\DependencyInjection\ContainerAware;
 
-class DefaultController
+class DefaultController extends ContainerAware
 {
     /**
      * @Route("/")
      */
     public function indexAction()
     {
-        return new Response('Here I am!');
+        $html = $this->container->get('twig')->render('pages/index.html.twig', array(
+            'content' => 'Here I am!',
+        ));
+
+        return new Response($html);
     }
 }
