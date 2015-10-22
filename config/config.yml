@@ -1,6 +1,11 @@
 framework:
     secret: toto
-    templating:
-        engine: [ twig ]
     router:
         resource: '%kernel.root_dir%/config/routing.yml'
+    templating:
+        engine: [twig]
+    profiler:
+        enabled: %kernel.debug%
+
+web_profiler:
+    toolbar: %kernel.debug%
