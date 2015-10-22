@@ -1,16 +1,18 @@
 <?php
 
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Debug;
+use Symfony\Component\HttpFoundation\Request;
 
 umask(0000);
 
-// Configuration
-$env = 'dev';
-$debug = true;
-
 $loader = require_once __DIR__.'/../config/autoload.php';
 require_once __DIR__.'/../AppKernel.php';
+
+$dotenv = new Dotenv\Dotenv(__DIR__.'/../');
+$dotenv->load();
+
+$env = getenv('SYMFONY_ENV');
+$debug = getenv('SYMFONY_DEBUG');
 
 if ($debug) {
     Debug::enable();
