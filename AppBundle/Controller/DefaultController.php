@@ -17,6 +17,8 @@ class DefaultController extends ContainerAware
             'content' => 'Here I am!',
         ));
 
+        dump($this->container);
+
         return new Response($html);
     }
 }
