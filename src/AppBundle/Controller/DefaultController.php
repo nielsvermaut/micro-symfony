@@ -6,19 +6,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\DependencyInjection\ContainerAware;
 
-class DefaultController extends ContainerAware
+class DefaultController extends AbstractController
 {
     /**
      * @Route("/")
      */
     public function indexAction()
     {
-        $html = $this->container->get('twig')->render('pages/index.html.twig', array(
-            'content' => 'Here I am!',
-        ));
-
-        dump($this->container);
-
-        return new Response($html);
+        return $this->render('pages/index.html.twig', ['content' => 'Here I am!']);
     }
 }
